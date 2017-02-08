@@ -7,8 +7,8 @@ describe('ang2-cli-startup App', function() {
     page = new ANG2CliStartupPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying My App Component', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('My App Component');
   });
 });

@@ -6,6 +6,6 @@ export class ANG2CliStartupPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('app-root a.navbar-brand')).getText();
   }
 }

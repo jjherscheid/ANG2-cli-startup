@@ -18,6 +18,7 @@ module.exports = function (config) {
             require('karma-remap-istanbul'),
             require('@angular/cli/plugins/karma')
         ],
+        retryLimit: config.debug ? 0 : 2,
         files: [
             { pattern: './src/test.ts', watched: false }
         ],
