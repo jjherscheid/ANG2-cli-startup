@@ -23,6 +23,8 @@ To be able to contribute to this repository the following tools should be instal
 1. NodeJs 6.x.x (see: [Download NodeJs](NodeJs: https://nodejs.org/en/download/current/))
     *this includes node package manager (npm)*
 2. Git (see [Download Git](https://git-scm.com/))
+3. Angular CLI (see [Angular CLI(https://cli.angular.io/)])
+    *npm install -g @angular/cli*
 
 ## Run the application
 
