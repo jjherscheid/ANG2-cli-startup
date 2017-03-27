@@ -14,8 +14,9 @@ module.exports = function (config) {
             require('karma-jasmine'),
             require('karma-chrome-launcher'),
             require('karma-phantomjs-launcher'),
-            require('karma-coverage'),            
-            require('karma-remap-istanbul'),
+            require('karma-coverage'),
+            require('karma-coverage-istanbul-reporter'),
+            require('karma-mocha-reporter'),
             require('@angular/cli/plugins/karma')
         ],
         retryLimit: config.debug ? 0 : 2,
@@ -28,19 +29,28 @@ module.exports = function (config) {
         mime: {
             'text/x-typescript': ['ts', 'tsx']
         },
-        remapIstanbulReporter: {
-            reports: {                
-                html: 'coverage/html',
-                lcovonly: './coverage/coverage.lcov',
-                'text-summary': null
+        coverageIstanbulReporter: {
+            reports: ['html', 'lcovonly', 'text-summary'],
+            dir: './coverage',
+            fixWebpackSourcePaths: true,
+            'report-config': {
+                // all options available at: https://github.com/istanbuljs/istanbul-reports/blob/590e6b0089f67b723a1fdf57bc7ccc080ff189d7/lib/html/index.js#L135-L137
+                html: {
+                    // outputs the report in ./coverage/html
+                    subdir: 'html'
+                }
             }
         },
+        mochaReporter: {
+            output: 'minimal',
+            maxLogLines: 3,            
+        },
         angularCli: {
-            config: './angular-cli.json',
+            config: './.angular-cli.json',
             environment: 'dev'
         },
         reporters: config.debug ? [] : config.angularCli && config.angularCli.codeCoverage
-            ? ['progress', 'karma-remap-istanbul']
+            ? ['mocha', 'coverage-istanbul']
             : ['progress'],
         port: 9876,
         colors: true,
